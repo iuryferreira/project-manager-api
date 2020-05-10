@@ -1,6 +1,8 @@
-const routes = require('express').Router();
-const data = require('./data');
-const middlewares = require('./middlewares');
+import { Router } from 'express';
+import data from './data';
+import middlewares from './middlewares';
+
+const routes = new Router();
 
 routes.get('/projects', (req, res) => res.status(200).send(data));
 
@@ -27,4 +29,4 @@ routes.post('/projects/:id/tasks', middlewares.getProject, (req, res) => {
   return res.status(201).send(project);
 });
 
-module.exports = routes;
+export default routes;
